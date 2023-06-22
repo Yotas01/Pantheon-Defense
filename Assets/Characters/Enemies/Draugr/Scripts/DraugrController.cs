@@ -11,7 +11,6 @@ namespace MyNamespace
 
         [SerializeField] private float moveSpeed;
         [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private Vector3 destination;
         public Transform[] waypoints { get; set; }
         [SerializeField] public int health;
         private int currentWaypointIndex = 0;
