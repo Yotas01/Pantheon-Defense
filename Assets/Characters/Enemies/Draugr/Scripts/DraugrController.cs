@@ -9,6 +9,7 @@ namespace MyNamespace
 
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private Vector3 destination;
         public int health { get; set; }
 
         // Start is called before the first frame update

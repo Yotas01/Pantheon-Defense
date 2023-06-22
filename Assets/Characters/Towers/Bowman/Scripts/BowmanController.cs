@@ -8,21 +8,24 @@ namespace MyNamespace
     {
 
         [SerializeField] private GameObject projetilePrefab;
+        private GameObject targetObject;
         private Transform target;
         private int damage = 10;
 
         // Start is called before the first frame update
         void Start()
         {
-            GameObject targetObject = GameObject.FindGameObjectWithTag("Enemy");
+            targetObject = GameObject.FindGameObjectWithTag("Enemy");
             target = targetObject.transform;
             InvokeRepeating("ShootProjectile", 0f, 2f);
         }
 
         // Update is called once per frame
-        void Update()
-        {
-
+        void Update(){
+            if(targetObject == null){
+                targetObject = GameObject.FindGameObjectWithTag("Enemy");
+                target = targetObject.transform;
+            }
         }
 
         private void ShootProjectile()
