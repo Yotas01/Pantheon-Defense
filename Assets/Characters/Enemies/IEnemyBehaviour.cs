@@ -6,10 +6,8 @@ namespace MyNamespace
 {
     public interface IEnemyBehaviour
     {
-        int health { get; set;}
-
+        Transform [] waypoints { get; set;}
         void damage(int damage);
-
         void heal(int heal);
     }
 }

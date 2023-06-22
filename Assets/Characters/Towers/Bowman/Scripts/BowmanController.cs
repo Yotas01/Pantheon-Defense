@@ -10,7 +10,7 @@ namespace MyNamespace
         [SerializeField] private GameObject projetilePrefab;
         private GameObject targetObject;
         private Transform target;
-        private int damage = 10;
+        [SerializeField] private int damage;
 
         // Start is called before the first frame update
         void Start()
@@ -30,7 +30,6 @@ namespace MyNamespace
 
         private void ShootProjectile()
         {
-            Debug.Log("Shooting projectile at target:" + target.position + " from position:" + transform.position);
             Vector2 direction = (target.position - transform.position).normalized;
             GameObject projectile = Instantiate(projetilePrefab, transform.position, Quaternion.identity);
             Vector3 directionToTarget = (target.position - transform.position).normalized;
