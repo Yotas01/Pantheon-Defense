@@ -8,10 +8,14 @@ namespace MyNamespace
     {
         public int ammount;
         public GameObject gameObject;
-        public Instruction(int ammount, GameObject gameObject)
+        public int secondsBetweenSpawn;
+        public int secondsForNextInstruction;
+        public Instruction(int ammount, GameObject gameObject, int secondsBetweenSpawn, int secondsForNextInstruction)
         {
             this.ammount = ammount;
             this.gameObject = gameObject;
+            this.secondsBetweenSpawn = secondsBetweenSpawn;
+            this.secondsForNextInstruction = secondsForNextInstruction;
         }
     }
 }

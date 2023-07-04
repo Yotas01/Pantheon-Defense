@@ -166,4 +166,4 @@ MonoBehaviour:
   rb: {fileID: 5107933502654888062}
   target: {fileID: 0}
   damage: 0
-  projectileSpeed: 6
+  projectileSpeed: 10
