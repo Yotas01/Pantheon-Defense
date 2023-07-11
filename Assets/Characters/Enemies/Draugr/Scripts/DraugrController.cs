@@ -12,23 +12,32 @@ namespace MyNamespace
         [SerializeField] private float moveSpeed;
         [SerializeField] private Rigidbody2D rb;
         public Transform[] waypoints { get; set; }
-        [SerializeField] public int health;
+        [SerializeField] public int maxHealth;
+        public int currentHealth;
+        [SerializeField] public HealthBar healthBar;
         private int currentWaypointIndex = 0;
+
+        private void Awake() {
+            rb = GetComponent<Rigidbody2D>();
+            healthBar = GetComponentInChildren<HealthBar>();
+            currentHealth = maxHealth;
+            Debug.Log("Max health: " + maxHealth + " current health: " + currentHealth);
+        }
 
         // Start is called before the first frame update
         void Start()
         {
             moveSpeed = moveSpeed * 0.001f;
-            rb = GetComponent<Rigidbody2D>();
             gameObject.tag = "Enemy";
             GameObject[] waypointObjects = GameObject.FindGameObjectsWithTag("Waypoint");
             waypoints = waypointObjects.ToList().OrderBy(obj => obj.name).Select(obj => obj.transform).ToArray();
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
         }
 
         // Update is called once per frame
         void Update(){
             moveToWaypoint();
-            if (health <= 0)
+            if (currentHealth <= 0)
             {
                 Destroy(gameObject);
             }
@@ -52,12 +61,15 @@ namespace MyNamespace
 
         public void damage(int damage)
         {
-            health -= damage;
+            currentHealth -= damage;
+            Debug.Log("Max health: " + maxHealth + " current health: " + currentHealth);
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
         }
 
         public void heal(int heal)
         {
-            health += heal;
+            currentHealth += heal;
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
         }
     }
 
