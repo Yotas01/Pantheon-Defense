@@ -13,10 +13,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - Ground
+  - 
   - Spawners
   - 
   - 
@@ -54,4 +54,7 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 2885418281
+    locked: 0
+  - name: UI
+    uniqueID: 3428819729
     locked: 0
